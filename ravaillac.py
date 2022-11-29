@@ -1,6 +1,7 @@
 import os
 import math
 
+
 def ravaillac(file_name, size_limit):
     if size_limit <= 0:
         return
@@ -30,8 +31,9 @@ def ravaillac(file_name, size_limit):
     i = 0
     fragment_number = 1
     while i <= len(file_value) - fragment_size:
-        with open(f"{result_path}/{file_name_without_extension}_fragment{fragment_number}{file_extension}", "wb") as file:
-            file.write(file_value[i:i+fragment_size])
+        with open(f"{result_path}/{file_name_without_extension}_fragment{fragment_number}{file_extension}",
+                  "wb") as file:
+            file.write(file_value[i:i + fragment_size])
 
         i += fragment_size
         fragment_number += 1
@@ -39,7 +41,9 @@ def ravaillac(file_name, size_limit):
     # we treat the rest
     # <=> if file_size % splits > 0
     if i != len(file_value):
-        with open(f"{result_path}/{file_name_without_extension}_fragment{fragment_number}{file_extension}", "wb") as file:
+        with open(f"{result_path}/{file_name_without_extension}_fragment{fragment_number}{file_extension}",
+                  "wb") as file:
             file.write(file_value[i:len(file_value)])
+
 
 ravaillac("test_files/debian-11.5.0-amd64-netinst.iso", 8e6)
