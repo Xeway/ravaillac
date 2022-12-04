@@ -60,7 +60,3 @@ def merge_fragments(path):
 
         with open(fragment_name_without_extension.split("--fragment", 1)[0] + fragment_extension, "ab") as original_file:
             original_file.write(fragment_value)
-
-# split_file("test_files/debian-11.5.0-amd64-netinst.iso", 8e6)
-
-merge_fragments("ravaillac_result/splits/debian-11.5.0-amd64-netinst.iso_8000000B")
