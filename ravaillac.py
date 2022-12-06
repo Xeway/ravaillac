@@ -2,28 +2,28 @@ import os
 import math
 
 
-def split_file(file_name, size_limit):
+def split_file(file_path, size_limit):
     if size_limit <= 0:
         return
 
-    file_size = os.stat(file_name).st_size
+    file_size = os.stat(file_path).st_size
     if file_size <= size_limit:
         return
 
-    only_file_name = os.path.basename(file_name)
-    file_name_without_extension, file_extension = os.path.splitext(only_file_name)
+    file_name = os.path.basename(file_path)
+    file_name_without_extension, file_extension = os.path.splitext(file_name)
 
     folder_id = 1
-    result_path = f"ravaillac_result/splits/{only_file_name}_{int(size_limit)}B"
+    result_path = f"ravaillac_result/splits/{file_name}_{int(size_limit)}B"
     while os.path.exists(result_path):
-        result_path = f"ravaillac_result/splits/{only_file_name}_{int(size_limit)}B-{folder_id}"
+        result_path = f"ravaillac_result/splits/{file_name}_{int(size_limit)}B-{folder_id}"
         folder_id += 1
 
     os.makedirs(result_path)
 
     splits = math.ceil(file_size / size_limit)
 
-    with open(file_name, "rb") as file:
+    with open(file_path, "rb") as file:
         file_value = file.read()
 
     fragment_size = file_size // splits
