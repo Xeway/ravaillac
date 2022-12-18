@@ -13,7 +13,7 @@ def open_file():
         confirm_button.configure(state="disabled")
 
 
-def size_limit_modified(*args):
+def size_limit_modified(*_):
     if file_path and size_limit.get().isdecimal():
         confirm_button.configure(state="normal")
     elif confirm_button.cget("state") == "normal":
@@ -24,10 +24,13 @@ def size_limit_modified(*args):
 def confirm_split_file():
     sl = size_limit.get()
     if file_path and sl.isdecimal():
+        split_file_status.configure(text="Ongoing operation...")
         result_path = ravaillac.split_file(file_path, int(sl))
         if result_path:
+            split_file_status.configure(text_color="green")
             split_file_status.configure(text=f"Operation succeeded. Result path: {result_path}")
         else:
+            split_file_status.configure(text_color="red")
             split_file_status.configure(text="Operation failed.")
 
 
@@ -76,7 +79,7 @@ confirm_button = customtkinter.CTkButton(master=split_tab,
                                          command=confirm_split_file)
 confirm_button.pack(pady=20)
 
-split_file_status = customtkinter.CTkLabel(master=split_tab)
+split_file_status = customtkinter.CTkLabel(master=split_tab, text="")
 split_file_status.pack()
 
 root.mainloop()
