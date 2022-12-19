@@ -14,9 +14,9 @@ def split_file(file_path, size_limit):
     file_name_without_extension, file_extension = os.path.splitext(file_name)
 
     folder_id = 1
-    result_path = f"ravaillac_result/splits/{file_name}_{int(size_limit)}B"
+    result_path = f"ravaillac_result/fragments/{file_name}_{int(size_limit)}B"
     while os.path.exists(result_path):
-        result_path = f"ravaillac_result/splits/{file_name}_{int(size_limit)}B-{folder_id}"
+        result_path = f"ravaillac_result/fragments/{file_name}_{int(size_limit)}B-{folder_id}"
         folder_id += 1
 
     os.makedirs(result_path)
