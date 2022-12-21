@@ -43,7 +43,7 @@ customtkinter.set_appearance_mode("dark")
 
 root = customtkinter.CTk()
 
-root.geometry("500x600")
+root.geometry("500x370")
 root.title("Ravaillac")
 
 size_limit = StringVar()
@@ -51,7 +51,7 @@ size_limit.trace_add("write", size_limit_modified)
 file_path = None
 directory_path = None
 
-tabview = customtkinter.CTkTabview(root, width=450, height=580)
+tabview = customtkinter.CTkTabview(root, width=450, height=345)
 tabview.pack()
 split_tab = tabview.add("Split a file")
 merge_tab = tabview.add("Merge fragments")
