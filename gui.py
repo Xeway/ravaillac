@@ -51,7 +51,7 @@ size_limit.trace_add("write", size_limit_modified)
 file_path = None
 directory_path = None
 
-tabview = customtkinter.CTkTabview(root, width=450, height=345)
+tabview = customtkinter.CTkTabview(root, width=450, height=346)
 tabview.pack()
 split_tab = tabview.add("Split a file")
 merge_tab = tabview.add("Merge fragments")
