@@ -7,11 +7,15 @@ import ravaillac
 def open_file():
     global file_path
     file_path = filedialog.askopenfilename()
-    selected_file.configure(text=file_path)
+
     if file_path and size_limit.get().isdecimal():
+        selected_file.configure(text=file_path)
         confirm_split_button.configure(state="normal")
-    elif confirm_split_button.cget("state") == "normal":
-        confirm_split_button.configure(state="disabled")
+    else:
+        selected_file.configure(text="No file selected.")
+
+        if confirm_split_button.cget("state") == "normal":
+            confirm_split_button.configure(state="disabled")
 
 
 def size_limit_modified(*_):
