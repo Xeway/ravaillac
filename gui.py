@@ -6,7 +6,10 @@ import ravaillac
 
 def open_file():
     global file_path
+    tmp = file_path
     file_path = filedialog.askopenfilename()
+    if not file_path and tmp:
+        file_path = tmp
 
     if file_path and size_limit.get().isdecimal():
         selected_file.configure(text=file_path)
@@ -94,7 +97,10 @@ split_file_status.pack()
 
 def open_directory():
     global directory_path
+    tmp = directory_path
     directory_path = filedialog.askdirectory()
+    if not directory_path and tmp:
+        directory_path = tmp
 
     if directory_path and os.listdir(directory_path):
         selected_directory.configure(text=directory_path)
