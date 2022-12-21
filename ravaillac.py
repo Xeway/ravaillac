@@ -13,11 +13,11 @@ def split_file(file_path, size_limit):
     file_name = os.path.basename(file_path)
     file_name_without_extension, file_extension = os.path.splitext(file_name)
 
-    folder_id = 1
+    directory_id = 1
     result_path = f"ravaillac_result/fragments/{file_name}_{int(size_limit)}B"
     while os.path.exists(result_path):
-        result_path = f"ravaillac_result/fragments/{file_name}_{int(size_limit)}B-{folder_id}"
-        folder_id += 1
+        result_path = f"ravaillac_result/fragments/{file_name}_{int(size_limit)}B-{directory_id}"
+        directory_id += 1
 
     os.makedirs(result_path)
 
@@ -48,12 +48,12 @@ def split_file(file_path, size_limit):
     return result_path
 
 
-def merge_fragments(folder_path):
-    fragments = os.listdir(folder_path)
+def merge_fragments(directory_path):
+    fragments = os.listdir(directory_path)
     fragments.sort(key=lambda x: int(x.split("--fragment", 1)[1].split(".", 1)[0]))
 
     for fragment_name in fragments:
-        with open(os.path.join(folder_path, fragment_name), "rb") as fragment:
+        with open(os.path.join(directory_path, fragment_name), "rb") as fragment:
             fragment_value = fragment.read()
 
         fragment_name_without_extension, fragment_extension = os.path.splitext(fragment_name)
