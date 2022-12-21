@@ -48,15 +48,19 @@ def split_file(file_path, size_limit):
     return result_path
 
 
-def merge_fragments(path):
-    fragments = os.listdir(path)
+def merge_fragments(folder_path):
+    fragments = os.listdir(folder_path)
     fragments.sort(key=lambda x: int(x.split("--fragment", 1)[1].split(".", 1)[0]))
 
     for fragment_name in fragments:
-        with open(os.path.join(path, fragment_name), "rb") as fragment:
+        with open(os.path.join(folder_path, fragment_name), "rb") as fragment:
             fragment_value = fragment.read()
 
         fragment_name_without_extension, fragment_extension = os.path.splitext(fragment_name)
 
-        with open(fragment_name_without_extension.split("--fragment", 1)[0] + fragment_extension, "ab") as original_file:
+        result_path = fragment_name_without_extension.split("--fragment", 1)[0] + fragment_extension
+
+        with open(result_path, "ab") as original_file:
             original_file.write(fragment_value)
+
+        return result_path
