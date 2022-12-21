@@ -12,7 +12,10 @@ def open_file():
         selected_file.configure(text=file_path)
         confirm_split_button.configure(state="normal")
     else:
-        selected_file.configure(text="No file selected.")
+        if file_path:
+            selected_file.configure(text=file_path)
+        else:
+            selected_file.configure(text="No file selected.")
 
         if confirm_split_button.cget("state") == "normal":
             confirm_split_button.configure(state="disabled")
