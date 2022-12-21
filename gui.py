@@ -45,8 +45,6 @@ def confirm_split_file():
             split_file_status.configure(text="Operation failed.")
 
 
-customtkinter.set_appearance_mode("dark")
-
 root = customtkinter.CTk()
 
 root.geometry("500x370")
