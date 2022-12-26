@@ -63,4 +63,4 @@ def merge_fragments(directory_path):
         with open(result_path, "ab") as original_file:
             original_file.write(fragment_value)
 
-        return result_path
+    return result_path
