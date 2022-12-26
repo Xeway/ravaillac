@@ -128,14 +128,14 @@ def confirm_merge_directory():
 label_directory_path = customtkinter.CTkLabel(master=merge_tab, text="Choose fragments to merge")
 label_directory_path.pack(pady=10)
 button_directory_path = customtkinter.CTkButton(master=merge_tab,
-                                             text="Open",
-                                             fg_color="purple3",
-                                             hover_color="purple4",
-                                             command=open_directory)
+                                                text="Open",
+                                                fg_color="purple3",
+                                                hover_color="purple4",
+                                                command=open_directory)
 button_directory_path.pack()
 selected_directory = customtkinter.CTkLabel(master=merge_tab,
-                                         text="No directory selected.",
-                                         text_color="gray50")
+                                            text="No directory selected.",
+                                            text_color="gray50")
 selected_directory.pack()
 
 confirm_merge_button = customtkinter.CTkButton(master=merge_tab,
