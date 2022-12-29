@@ -36,11 +36,17 @@ def confirm_split_file():
     sl = size_limit.get()
     if file_path and sl.isdecimal():
         split_file_status.configure(text="Ongoing operation...")
-        result_path = ravaillac.split_file(file_path, int(sl))
-        if result_path:
-            split_file_status.configure(text_color="green")
-            split_file_status.configure(text=f"Operation succeeded. Result path: {result_path}")
-        else:
+
+        try:
+            result_path = ravaillac.split_file(file_path, int(sl))
+
+            if result_path:
+                split_file_status.configure(text_color="green")
+                split_file_status.configure(text=f"Operation succeeded. Result path: {result_path}")
+            else:
+                split_file_status.configure(text_color="red")
+                split_file_status.configure(text="Operation failed.")
+        except:
             split_file_status.configure(text_color="red")
             split_file_status.configure(text="Operation failed.")
 
@@ -116,11 +122,17 @@ def open_directory():
 def confirm_merge_directory():
     if directory_path:
         merge_directory_status.configure(text="Ongoing operation...")
-        result_path = ravaillac.merge_fragments(directory_path)
-        if result_path:
-            merge_directory_status.configure(text_color="green")
-            merge_directory_status.configure(text=f"Operation succeeded. Result path: {result_path}")
-        else:
+
+        try:
+            result_path = ravaillac.merge_fragments(directory_path)
+
+            if result_path:
+                merge_directory_status.configure(text_color="green")
+                merge_directory_status.configure(text=f"Operation succeeded. Result path: {result_path}")
+            else:
+                merge_directory_status.configure(text_color="red")
+                merge_directory_status.configure(text="Operation failed.")
+        except:
             merge_directory_status.configure(text_color="red")
             merge_directory_status.configure(text="Operation failed.")
 
